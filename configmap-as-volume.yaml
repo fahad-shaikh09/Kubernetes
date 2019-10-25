@@ -1,0 +1,17 @@
+#CONFIGMAP AS VOLUME
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: podwithcm
+spec:
+  volumes:
+  - name: vol
+    configMap:
+      name: mycm
+  containers:
+  - name: c1
+    image: nginx
+    volumeMounts:
+    - name: vol
+      mountPath: /data
