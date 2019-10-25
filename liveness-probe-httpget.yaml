@@ -1,0 +1,16 @@
+LIVNESS PROBE: HTTPGET
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: c1
+spec:
+  containers:
+  - name: c1
+    image: fahadshaikh/fahad
+    ports:
+    - containerPort: 80
+    livenessProbe:                       readinessProbe:
+      httpGet:                             httpGet: 
+        port: 80                             port: 80
+        path: /                              path: /
