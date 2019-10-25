@@ -1,0 +1,18 @@
+#CONFIG MAPS
+
+kubectl create configmap mycm --from-literal=app=test --from-literal=phase=prod
+--------------------------------------------------------------------------------
+
+nano cm.yaml
+
+first=fahad
+last=shaikh
+
+kubectl create configmap mycm --from-file=cm.yaml
+--------------------------------------------------------------------------------
+
+nano cm.env
+
+CREATEDBY=fahad
+
+kubectl create configmap mycm-fromenv --from-env-file=cm.env
