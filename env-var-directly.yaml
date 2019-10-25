@@ -1,0 +1,15 @@
+#PASSING ENVIRONMENT VARIABLES DIRECTLY
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pod
+spec:
+  containers:
+  - name: c1
+    image: nginx
+    env:
+    - name: USERNAME
+      value: Fahad
+    - name: COURSE
+      value: CKAD
