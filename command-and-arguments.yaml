@@ -1,0 +1,2 @@
+command: ["/bin/sh"]
+args: ["-c", "while true; do date; sleep 5; done"]
