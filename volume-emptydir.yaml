@@ -1,0 +1,25 @@
+#EMPTYDIR
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: v1
+spec:
+  volumes:
+  - name: shared
+    emptyDir: {}
+  containers:
+  - name: cv1
+    image: aamirpinger/logfile_nodejs                    #this image writes time in /data
+    ports:
+    - containerPort: 80 
+    volumeMounts:
+    - name: shared
+      mountPath: /data
+  - name: cv2
+    image: nginx
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: shared
+      mountPath: /data
