@@ -1,0 +1,24 @@
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: cj
+spec:
+  schedule: "* * * * *"
+  successfulJobsHistoryLimit: 4
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 60
+      backoffLimit: 4
+      template:
+        metadata:
+        spec:
+          containers:
+          - image: docker/whalesay
+            name: cj1
+            command: ["cowsay","Test text"]
+          restartPolicy: Never
+
+ 
+OR
+
+kubectl run cj --image=docker/whalesay --restart=OnFailure --schedule="* * * * *" -o yaml --dry-run -- cowsay > cj.yaml
