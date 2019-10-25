@@ -1,0 +1,15 @@
+LIVNESS PROBE: TCPSOCKET
+
+kind: Pod
+apiVersion: v1
+metadata: 
+  name: c1
+spec:
+  containers:
+  - image: fahadshaikh/fahad
+    name: c1
+    ports:
+    - containerPort: 80
+    livenessProbe:                       readinessProbe:   
+      tcpSocket:                           tcpSocket: 
+        port: 80                             port: 80
