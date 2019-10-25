@@ -1,0 +1,15 @@
+#PERSISTENT VOLUME
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1M
+  hostPath:
+    path: /tmp/
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: ""
