@@ -1,0 +1,19 @@
+#PASSING CONFIGMAP'S SINGLE VALUE AS ENV VARIABLE
+
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: cmasenv
+spec:
+  containers:
+  -  name: c1
+     image: nginx
+     ports:
+     -  containerPort: 80
+     env:
+     - name: CREATEDBY
+       valueFrom:
+         configMapKeyRef:
+           name: name-of-cm
+           key: cm-key 
