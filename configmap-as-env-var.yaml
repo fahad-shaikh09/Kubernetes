@@ -1,0 +1,24 @@
+#CONFIGMAP AS ENV VARIABLE
+
+nano cmasenv.yaml
+
+kind Pod:
+apiVersion: v1
+metadata:
+  name: envpod
+spec:
+  containers:
+  - name: c1
+    image: aamirpinger/node-app-image
+    envFrom:
+    - configMapRef:
+        name: mycm-fromenv
+
+#NOW CREATE POD
+kubectl create -f cmasenv.yaml
+
+kubectl exec pod envpod -it sh
+env 
+
+kubectl expose pod envpod --port=8080 --target-port=8080 --type=LoadBalancer
+
