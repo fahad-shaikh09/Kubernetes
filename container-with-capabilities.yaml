@@ -1,0 +1,10 @@
+#Create the YAML for an nginx pod that has the capabilities "NET_ADMIN", "SYS_TIME" added on its single container
+
+spec:
+  containers:
+  - image: nginx
+    imagePullPolicy: IfNotPresent
+    name: nginx
+    securityContext:
+      capabilities: 
+        add: ["NET_ADMIN", "SYS_TIME"]
