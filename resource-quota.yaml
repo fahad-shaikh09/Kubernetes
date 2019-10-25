@@ -1,0 +1,26 @@
+#RESOURCE QUOTA
+
+kubectl create namespace testns
+
+
+nano rq.yaml
+
+kind: ResurceQuota
+apiVersion: v1
+metadata: 
+  name: rq
+  namespace: testns
+spec:
+  hard:
+    pods: 5
+    "requests.cpu": "2"
+    "requests.memory": 1024m
+    "limits.cpu": "4"
+    "limits.memory": 2048m
+
+kubectl create -f rq.yaml
+
+
+OR
+kubectl create namespace testns
+kubectl create quota myquota --hard='cpu=1,memory=512m,pods=5' --namespace=testns
