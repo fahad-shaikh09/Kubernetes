@@ -1,0 +1,22 @@
+#Create the YAML for an nginx pod that runs with the UID 101
+
+spec:
+  securityContext:     # insert this line
+    runAsUser: 101     # UID for the user
+    fsGroup: 200       # Group ID for filesystem access
+
+
+#IF THERE ARE 2 CONTAINERS IN A POD THEN FSGROUP WILL COME UNDER SPEC, AT POD'S LEVEL
+
+spec:
+  securityContext:
+    fsGroup: 300
+  containers:
+  - name: c1 
+    image:
+    securityContext:
+      runAsUser: 100
+  - name: c2
+    image:
+    securityContext:
+      runAsUser: 200
