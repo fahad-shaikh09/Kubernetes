@@ -1,0 +1,17 @@
+LIVENESS PROBE: EXEC
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: liveness1
+spec:
+  containers:
+  - name: c1
+    image: fahadshaikh/fahad
+    ports:
+    - containerPort: 80
+    livenessProbe:                      readinessProbe:
+      exec:                               exec:
+        command:                            command: 
+        - ls                                - ls 
+        - /var/log                          - /var/logs 
