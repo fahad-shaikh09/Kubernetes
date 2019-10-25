@@ -1,0 +1,22 @@
+kind: Pod
+apiVersion: v1
+metadata: 
+  name: pod
+  namespace: testns
+spec:
+  containers:
+  - name: c1
+    image: nginx
+    ports:
+    - containerPort: 80
+    resources:
+      limits:
+        memory: 200Mi
+        cpu: "200"
+      requests:
+        memory: 100Mi
+        cpu: "100"
+
+
+kubectl describe quota --namespace=my-namespace
+kubectl describe pod my-pod --namespace=my-namespace
