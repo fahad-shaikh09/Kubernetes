@@ -1,0 +1,8 @@
+    livenessProbe:
+      httpGet:
+        port: 80
+      failureThreshold: 3
+      successThreshold: 1
+      timeoutSeconds: 1
+      periodSeconds: 10
+      initialDelaySeconds: 15
