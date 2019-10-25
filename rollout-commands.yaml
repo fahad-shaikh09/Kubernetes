@@ -1,0 +1,6 @@
+kubectl rollout pause deplyment deploy
+kubectl rollout resume deployment deploy
+kubectl rollout status deployment deploy
+kubectl rollout history deployment deploy
+kubectl rollout history deployment deploy --revision=1
+kubectl rollout undo deployment deploy --to-revision=1
