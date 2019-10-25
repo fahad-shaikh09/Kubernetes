@@ -1,0 +1,43 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: access-nginx 
+spec:
+  podSelector:                            # dest pods 
+    matchLabels:                          # with this label 
+      run: nginx                          # selector for the pods
+  ingress:                                # allow ingress traffic
+  - from:
+    - podSelector:                        # from pods
+        matchLabels:                      # with this label
+          access: 'true'                  # 'true' *needs* quotes in YAML, apparently
+-------------------------
+spec:
+  podSelector:
+    matchLabels:
+      app: database
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: webserver
+    ports:
+    - port: 5432
+---------------------------
+spec:
+  podSelector: 
+    matchLabels:
+      app: test
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          access: "true"
+    ports:
+    - port: 5432
+---------------------------
+ingress:
+- from:
+  - ipBlock:
+      cidr: 192.168.1.0/24
+
