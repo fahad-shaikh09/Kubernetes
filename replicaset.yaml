@@ -1,0 +1,41 @@
+apiVersion: apps/v1beta2
+metadata:
+  name: rs
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+      - name: c1
+        image: fahadshaikh/fahad
+        ports:
+        - containerPort: 80
+---------------------------------------------------------------------------
+kind: ReplicaSet
+apiVersion: apps/v1beta2
+metadata:
+  name: rs
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - prod
+  template:
+    metadata:
+      labels:
+        app: prod
+    spec:
+      containers:
+      - name: c2
+        image: fahadshaikh/fahad
+        ports:
+        - containerPort: 80
