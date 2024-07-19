@@ -3,14 +3,26 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: access-nginx 
 spec:
-  podSelector:                            # dest pods 
+  podSelector:                            # select pods on which Policy will be applied 
     matchLabels:                          # with this label 
-      run: nginx                          # selector for the pods
+      run: nginx                          # labels of the pods
+  policyTypes: 
+  - Ingress
   ingress:                                # allow ingress traffic
   - from:
-    - podSelector:                        # from pods
-        matchLabels:                      # with this label
-          access: 'true'                  # 'true' *needs* quotes in YAML, apparently
+    - ipBlock:
+        cidr: 172.17.0.0/16
+        except:
+        - 172.17.1.0/24
+    - namespaceSelector:
+        matchLabels:
+          project: myproject
+    - podSelector:
+        matchLabels:
+          role: frontend
+    ports:
+    - protocol: TCP
+      port: 80
 -------------------------
 spec:
   podSelector:
