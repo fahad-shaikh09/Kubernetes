@@ -2,8 +2,15 @@ spec:
   podSelector: 
     matchLabels:
       app: test
+  policyTypes:
+  - Egress
   egress:
   - to:
     - podSelector:
         matchLabels:
           app: database
+    port:
+    - protocol: TCP
+      port: 80
+      
+    
