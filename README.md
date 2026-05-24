@@ -18,3 +18,5 @@ Contains codes about following Kubernetes resources:
 - [x] Volumes
 - [x] Persistent Volume & Persistent Volume Claim
 - [x] Commands and Arguments
+
+<img width="792" height="612" alt="image" src="https://github.com/user-attachments/assets/579f76dd-3aaf-4ccf-ac4a-907a753807b1" />
